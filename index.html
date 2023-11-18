@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;200;300&family=Work+Sans:wght@300&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+
+    <script src="https://kit.fontawesome.com/07aa5431ef.js" crossorigin="anonymous"></script>
+    <title>Shopitify</title>
+</head>
+
+<body>
+    <header>
+        <div class="format">
+            <div class="menu_side">
+
+                <div class="music">
+                    <h1>MUSIC</h1>
+                    <ul>
+                        <li><img src="./images/guitar.png" alt=""><a href="#">Songs</a></li>
+                        <li><img src="./images/photo-album.png" alt=""><a href="#">Albums</a></li>
+                        <li><img src="./images/fountain-pen.png" alt=""><a href="#">Artists</a></li>
+                        <li><img src="./images/folder.png" alt=""><a href="#">Local Files</a></li>
+                        <li><img src="./images/heart.png" alt=""><a href="#">Likes</a></li>
+                    </ul>
+                </div>
+
+                <div class="your_playlists">
+                    <h1>YOUR PLAYLISTS</h1>
+                    <ul>
+                        <li><a href="#">Lowfi Chill</a></li>
+                        <li><a href="#">New Vibes</a></li>
+                        <li><a href="#">Acoustic Classic</a></li>
+                        <li><a href="#">Rain</a></li>
+                        <li><a href="#">K-Pop</a></li>
+                        <button>+ Creat new</button>
+                    </ul>
+                </div>
+
+
+
+            </div>
+
+            <div class="song_side">
+                <div class="tool_search">
+                    <form action="" class="search_bar">
+                        <input type="text" placeholder="Search..">
+                        <button type="submit"><img src="images/search.png"></button>
+                    </form>
+                </div>
+
+                <div class="albums">
+                    <p>Featured</p>
+                    <h1>Albums</h1>
+                    <div class="icons">
+                        <i class="bi bi-chevron-left"></i>
+                        <i class="bi bi-chevron-right"></i>
+                    </div>
+                    <div class="cards">
+                        <li>
+                            <img src="https://upload.wikimedia.org/wikipedia/en/f/f6/Taylor_Swift_-_1989.png">
+                            <h1>Love Story</h1>
+                            <h2>Taylor Swift</h2>
+                        </li>
+                        <li>
+                            <img src="https://upload.wikimedia.org/wikipedia/en/f/f6/Taylor_Swift_-_1989.png">
+                            <h1>Lover</h1>
+                            <h2>Taylor Swift</h2>
+                        </li>
+                        <li>
+                            <img src="https://upload.wikimedia.org/wikipedia/en/f/f6/Taylor_Swift_-_1989.png">
+                            <h1>Style</h1>
+                            <h2>Taylor Swift</h2>
+                        </li>
+                        <li>
+                            <img src="https://upload.wikimedia.org/wikipedia/en/f/f6/Taylor_Swift_-_1989.png">
+                            <h1>Shake it Off</h1>
+                            <h2>Taylor Swift</h2>
+                        </li>
+
+                    </div>
+                </div>
+                <div class="listen">
+                    <div class="recently">
+                        <p>Playlists</p>
+                        <h1>Recently Added</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="play_queue">
+                <h1>Play queues</h1>
+                <p>bla bla sdasdsafasfadsdasdsaaaaaaa</p>
+            </div>
+        </div>
+
+        <div class="music-player">
+            <div class="song-bar">
+                <div class="song-infos">
+                    <div class="image-container">
+                        <img src="https://usercontent.jamendo.com/?type=album&id=467858&width=300&trackid=1912601"
+                            alt="" />
+                    </div>
+                    <div class="song-description">
+                        <p class="title">
+                            Acrylic
+                        </p>
+                        <p class="artist">Michael Ellis</p>
+                    </div>
+                </div>
+                <div class="icons">
+                    <i class="far fa-heart"></i>
+                    <i class="fas fa-compress"></i>
+                </div>
+
+            </div>
+
+            <div class="play">
+                <audio id="song">
+                    <source src="musics/Acrylic_-_Michael_Ellis.mp3" type="audio/mp3">
+                </audio>
+                <input type="range" value="0" id="progress">
+
+                <div class="controls">
+                    <div><i class="fa-solid fa-backward"></i></div>
+                    <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+                    <div><i class="fa-solid fa-forward"></i></div>
+                </div>
+            </div>
+
+
+
+            <div class="other-features">
+                <i class="fas fa-list-ul"></i>
+                <i class="fas fa-desktop"></i>
+                <div class="volume-bar">
+                    <i class="fas fa-volume-down"></i>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <script>
+            let progress = document.getElementById("progress");
+            let song = document.getElementById("song");
+            let ctrlIcon = document.getElementById("ctrlIcon");
+
+            song.onloadedmetadata = function () {
+                progress.max = song.duration;
+                progress.value = song.currentTime;
+            };
+
+            function playPause() {
+                if (song.paused) {
+                    song.play();
+                    ctrlIcon.classList.remove("fa-play");
+                    ctrlIcon.classList.add("fa-pause");
+                } else {
+                    song.pause();
+                    ctrlIcon.classList.remove("fa-pause");
+                    ctrlIcon.classList.add("fa-play");
+                }
+            }
+            
+            if (song.play) {
+                setInterval(()=>{
+                    progress.value = song.currentTime;
+                }, 500)
+            }
+
+            progress.onchange = function() {
+                song.play();
+                song.currentTime = progress.value;
+                ctrlIcon.classList.remove("fa-play");
+                ctrlIcon.classList.add("fa-pause");
+            }
+
+        </script>
+
+    </header>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
